@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Twainsoft.VSSettingsSwitcher.GUI.ToolWindows.Settings.SettingSwitcherControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:src="clr-namespace:Twainsoft.VSSettingsSwitcher.GUI.Converter"
+             mc:Ignorable="d" d:DesignHeight="438" d:DesignWidth="340">
+    <UserControl.Resources>
+        <src:FileNameConverter x:Key="fileNameConverter"/>
+        <src:PathConverter x:Key="pathConverter"/>
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="BorderBrush" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <LinearGradientBrush x:Key="AlternateRowBackgroundBrush"
+                     StartPoint="0.5,0.0" EndPoint="0.5,1.0">
+            <GradientStop Color="#FFFEFEFF" Offset="0"/>
+            <GradientStop Color="#FFE4F0FC" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top" Height="26" Name="mainToolBar" HorizontalAlignment="Stretch" Width="Auto" ToolBarTray.IsLocked="True">
+            <ToolBar.Items>
+                <TextBox Name="searchTerm" MinWidth="150" Width="220" KeyDown="searchTerm_KeyDown" />
+                <Button Name="search" Click="search_Click">
+                    <TextBlock Text="Search" />
+                </Button>
+            </ToolBar.Items>
+        </ToolBar>
+        <Grid DockPanel.Dock="Bottom">
+            <Button Content="Activate" HorizontalAlignment="Right" Margin="0,0,12,12" Name="activateSelectedSettings" Width="75" Height="23" VerticalAlignment="Bottom" Click="activateSelectedSettings_Click" IsEnabled="False" IsDefault="True" />
+            <Button Content="Manage..." Height="23" HorizontalAlignment="Left" Margin="12,0,0,12" Name="manageSettings" VerticalAlignment="Bottom" Width="75" Click="manageSettings_Click" />
+            <DataGrid AutoGenerateColumns="False" Name="settingsFilesOverview" ItemsSource="{Binding}" CanUserResizeRows="False" SelectionMode="Single" HeadersVisibility="None"
+                  GridLinesVisibility="None" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" 
+                  CanUserAddRows="False" MouseDoubleClick="settingsFilesOverview_MouseDoubleClick" SelectionUnit="FullRow" SelectionChanged="settingsFilesOverview_SelectionChanged" 
+                  Margin="0,0,0,41" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <!--<DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Top" Text="{Binding Name}" TextWrapping="Wrap" FontSize="13" Foreground="Black" />
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <TextBlock DockPanel.Dock="Left" Text="File:" Margin="0,0,5,0" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding File}" TextWrapping="Wrap" FontSize="12" />
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel>
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <TextBlock DockPanel.Dock="Left" Text="Path:" FontWeight="Bold" Margin="0,0,5,0" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding File, Converter={StaticResource pathConverter}}" TextWrapping="Wrap" />
+                        </DockPanel>
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                        <TextBlock Text="Path:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding File}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>-->
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Active" CanUserReorder="False" CanUserResize="False" Width="24">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Name="isActive" Width="16" Height="16" />
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsActive}" Value="true">
+                                        <Setter TargetName="isActive" Property="Source" Value="/Twainsoft.VSSettingsSwitcher.GUI;component/Resources/SettingsActive.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsActive}" Value="false">
+                                        <Setter TargetName="isActive" Property="Source" Value="{x:Null}" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Name" CanUserReorder="False" CanUserResize="False" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top" Text="{Binding Name}" TextWrapping="Wrap" FontSize="13" Foreground="Black" />
+                                    <DockPanel DockPanel.Dock="Bottom">
+                                        <TextBlock DockPanel.Dock="Left" Text="File:" Margin="0,0,5,0" />
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding File, Converter={StaticResource fileNameConverter}}" TextWrapping="Wrap" FontSize="12" />
+                                    </DockPanel>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Create..." Height="23" Margin="93,0,0,12" Name="createSetting" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Click="createSetting_Click" />
+        </Grid>
+    </DockPanel>
+</UserControl>

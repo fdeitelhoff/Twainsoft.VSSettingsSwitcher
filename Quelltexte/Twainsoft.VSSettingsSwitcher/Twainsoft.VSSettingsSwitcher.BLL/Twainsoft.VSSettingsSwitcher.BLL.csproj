@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{760880B4-97A0-42FA-A65A-13D1530038D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Twainsoft.VSSettingsSwitcher.BLL</RootNamespace>
+    <AssemblyName>Twainsoft.VSSettingsSwitcher.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key\Twainsoft.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\PublicAssemblies\envdte80.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Settings, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.VisualStudio.Shell.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Documents\DocumentFormatter.cs" />
+    <Compile Include="Components\Documents\DocumentSaver.cs" />
+    <Compile Include="Components\Options\Base\BaseOptionsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Options\Base\BaseOptionsPage.Designer.cs">
+      <DependentUpon>BaseOptionsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Options\Base\BaseOptionsStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Options\General\GeneralOptionsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Options\General\GeneralOptionsPage.Designer.cs">
+      <DependentUpon>GeneralOptionsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Options\General\GeneralOptionsStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Create\CreateOptionsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Create\CreateOptionsPage.Designer.cs">
+      <DependentUpon>CreateOptionsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Create\CreateOptionsStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Manage\AddSettingsEntry.xaml.cs">
+      <DependentUpon>AddSettingsEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Manage\AddNewSettingsEntryEventArgs.cs" />
+    <Compile Include="Components\Options\VSSettings\Manage\ManageOptionsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Manage\ManageOptionsPage.Designer.cs">
+      <DependentUpon>ManageOptionsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Manage\ManageOptionsStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Options\VSSettings\Manage\SettingsFilesOverview.xaml.cs">
+      <DependentUpon>SettingsFilesOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Settings\Activate\SettingsActivatedMessage.cs" />
+    <Compile Include="Components\Settings\Activate\SettingsActivator.cs" />
+    <Compile Include="Components\Settings\Category\SettingCategoriesRetrievedMessage.cs" />
+    <Compile Include="Components\Settings\Category\SettingsCategoryRetriever.cs" />
+    <Compile Include="Components\Settings\Export\SettingsExportedMessage.cs" />
+    <Compile Include="Components\Settings\Export\SettingsExporter.cs" />
+    <Compile Include="Components\Settings\Save\SettingsEntrySavedMessage.cs" />
+    <Compile Include="Components\Settings\Save\SettingsEntrySaver.cs" />
+    <Compile Include="Components\StatusBar\StatusBarUpdater.cs" />
+    <Compile Include="Components\Windows\WindowTracker.cs" />
+    <Compile Include="Contracts\Documents\IDocumentFormatter.cs" />
+    <Compile Include="Contracts\Documents\IDocumentSaver.cs" />
+    <Compile Include="Contracts\Settings\Activate\ISettingsActivatedMessage.cs" />
+    <Compile Include="Contracts\Settings\Activate\ISettingsActivator.cs" />
+    <Compile Include="Contracts\Settings\Category\ISettingCategoriesRetrievedMessage.cs" />
+    <Compile Include="Contracts\Settings\Category\ISettingsCategoryRetriever.cs" />
+    <Compile Include="Contracts\Settings\Export\ISettingsExportedMessage.cs" />
+    <Compile Include="Contracts\Settings\Save\ISettingsEntrySavedMessage.cs" />
+    <Compile Include="Contracts\Settings\Save\ISettingsEntrySaver.cs" />
+    <Compile Include="Contracts\StatusBar\IStatusBarUpdater.cs" />
+    <Compile Include="Contracts\Settings\Export\ISettingsExporter.cs" />
+    <Compile Include="Contracts\Windows\IWindowTracker.cs" />
+    <Compile Include="Exceptions\Settings\Save\SettingsEntryUniqueException.cs" />
+    <Compile Include="Models\Settings\SettingsCategoryViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\Options\Base\BaseOptionsPage.resx">
+      <DependentUpon>BaseOptionsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Options\General\GeneralOptionsPage.resx">
+      <DependentUpon>GeneralOptionsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Options\VSSettings\Create\CreateOptionsPage.resx">
+      <DependentUpon>CreateOptionsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Options\VSSettings\Manage\ManageOptionsPage.resx">
+      <DependentUpon>ManageOptionsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Twainsoft.VSSettingsSwitcher.DAL\Twainsoft.VSSettingsSwitcher.DAL.csproj">
+      <Project>{451217FF-FAFC-4BA1-B63C-0020584B9245}</Project>
+      <Name>Twainsoft.VSSettingsSwitcher.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Twainsoft.VSSettingsSwitcher.Utility\Twainsoft.VSSettingsSwitcher.Utility.csproj">
+      <Project>{3170F7FB-D354-4151-A6EE-326C8FBE887A}</Project>
+      <Name>Twainsoft.VSSettingsSwitcher.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key\Twainsoft.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\Options\VSSettings\Manage\AddSettingsEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\Options\VSSettings\Manage\SettingsFilesOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SettingsActive.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

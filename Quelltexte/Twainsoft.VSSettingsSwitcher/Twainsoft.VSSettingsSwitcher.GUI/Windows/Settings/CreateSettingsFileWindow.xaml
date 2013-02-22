@@ -1,0 +1,43 @@
+﻿<Window x:Class="Twainsoft.VSSettingsSwitcher.GUI.Windows.Settings.CreateSettingsFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Export Settings" Height="813" Width="652" WindowStartupLocation="CenterScreen" Icon="/Twainsoft.VSSettingsSwitcher.GUI;component/Resources/SettingsSwitcherIcon.bmp">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
+                <Setter Property="IsExpanded" Value="True" />
+                <Setter Property="IsSelected" Value="{Binding IsInitiallySelected, Mode=OneTime}" />
+                <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True" />
+            </Style>
+
+            <HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}">
+                <StackPanel Orientation="Horizontal">
+
+                    <CheckBox Focusable="False" 
+                              IsChecked="{Binding IsChecked}" 
+                              VerticalAlignment="Center"/>
+                    <ContentPresenter Content="{Binding Name, Mode=OneTime}" 
+                                      Margin="2,0"/>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Button Content="Export..." Margin="0,136,93,0" Name="exportSettings" Click="exportSettings_Click" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Top" IsEnabled="False" IsDefault="True" />
+        <TextBlock Height="58" Name="infoText" Text="Choose the available settings categories to export them to a a new settings file that fits your custom needs. The exported settings values are based upon the current loaded Visual Studio settings!" VerticalAlignment="Top" TextWrapping="Wrap" Margin="0" Padding="8,2,4,2" />
+        <GroupBox Header="Settings-Switcher entry" Height="82" Margin="6,48,6,0" Name="groupBox1" VerticalAlignment="Top">
+            <Grid>
+                <CheckBox Content="Create a Settings-Switcher entry after a successful export." Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="isSettingsEntryCreated" VerticalAlignment="Top" Width="336" IsChecked="True" Click="isSettingsEntryCreated_Click" />
+                <TextBox Height="23" Margin="53,28,6,0" Name="settingsEntryName" VerticalAlignment="Top" IsEnabled="True" TextChanged="settingsEntryName_TextChanged" />
+                <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="3,26,0,0" Name="label1" VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Exportable settings categories" Margin="6,162,6,12" Name="groupBox2">
+            <Grid>
+                <TreeView Name="exportableSettingsCategories" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemsSource="{Binding Mode=OneTime}" ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
+            </Grid>
+        </GroupBox>
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,136,12,0" Name="cancel" VerticalAlignment="Top" Width="75" IsCancel="True" />
+    </Grid>
+</Window>
